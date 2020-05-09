@@ -1,8 +1,7 @@
 
 
-def test_main_page(browser_param):
-    browser = browser_param
+def test_main_page(web_driver):
+    browser = web_driver
     browser.get("http://localhost")
-    page_title = browser.title
-    assert page_title == "Your Store"
+    assert browser.title == "Your Store"
     browser.quit()
