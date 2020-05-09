@@ -8,7 +8,19 @@ def pytest_addoption(parser):
     parser.addoption('--browser',
                      action='store',
                      default='chrome',
-                     help='Передайте браузер с помощью параметра --browser')
+                     help='Передайте драйвер браузера с помощью параметра --browser, доступны safari, firefox, chrome'
+                          ', например, --browser=safari')
+
+    parser.addoption('--url',
+                     action='store',
+                     default='http://localhost',
+                     help='Передайте url с помощью параметра --url, например, --url=https://yandex.ru')
+
+
+@pytest.fixture
+def url_param(request):
+    """Фикстура для перадачи url"""
+    return request.config.getoption('--url')
 
 
 @pytest.fixture()
@@ -26,11 +38,7 @@ def web_driver(request):
     ff_options.add_argument("--kiosk")
 
     browser = request.config.getoption('--browser')
-    driver_name = dict(
-        firefox='geckodriver',
-        chrome='chromedriver',
-        safari='safaridriver'
-    )[browser]
+
     if browser == 'firefox':
         driver = webdriver.Firefox(firefox_options=ff_options)
     elif browser == 'chrome':
