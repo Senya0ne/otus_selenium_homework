@@ -32,20 +32,18 @@ def web_driver(request):
     Фикстура для инициализации и передачи драйверов
     """
 
-    ch_options = webdriver.ChromeOptions()
-    ch_options.add_argument("headless")
-    ch_options.add_argument("--kiosk")
-
-    ff_options = webdriver.FirefoxOptions()
-    ff_options.headless = True
-    ff_options.add_argument("--kiosk")
-
     browser = request.config.getoption('--browser')
 
     if browser == 'firefox':
-        driver = webdriver.Firefox(options=ff_options)
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.maximize_window()
     elif browser == 'chrome':
-        driver = webdriver.Chrome(options=ch_options)
+        options = webdriver.ChromeOptions()
+        options.headless = True
+        driver = webdriver.Chrome(options=options)
+        driver.maximize_window()
     elif browser == 'safari':
         driver = webdriver.Safari()
         driver.maximize_window()
