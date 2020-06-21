@@ -27,9 +27,9 @@ def test_quantity_macs(web_driver, base_url):
     assert 1 == len(cards)
 
 
-def test_sorting_az(web_driver, base_url):
+def test_sorting_za(web_driver, base_url):
     browser = web_driver
     browser.get(base_url + url_helper)
     browser.find_element_by_xpath("//select[@class='form-control']/option[text()='Name (Z - A)']").click()
-    kek = browser.find_elements_by_xpath("//*[contains(text(),'Sony VAIO')]")
-
+    products_list = browser.find_elements_by_xpath("//*[@class='product-thumb']")
+    assert "Sony VAIO" in products_list[0].text

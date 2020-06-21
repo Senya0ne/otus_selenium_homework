@@ -3,7 +3,6 @@ import pytest
 from selenium import webdriver
 
 
-
 def pytest_addoption(parser):
     """Параметры для запуска тестов"""
 
