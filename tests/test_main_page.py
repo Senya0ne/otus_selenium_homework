@@ -1,4 +1,4 @@
-def test_main_page(web_driver, url_param):
+def test_main_page(web_driver, url):
     browser = web_driver
-    browser.get(url_param)
+    browser.get(url)
     assert browser.title == "Your Store"

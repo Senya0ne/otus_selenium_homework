@@ -21,7 +21,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def url_param(request):
+def url(request):
     """Фикстура для перадачи url"""
     return request.config.getoption('--url')
 
