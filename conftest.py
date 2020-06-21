@@ -1,7 +1,7 @@
 """ string for pylint"""
 import pytest
 from selenium import webdriver
-import os
+
 
 
 def pytest_addoption(parser):
@@ -22,7 +22,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def url(request):
+def base_url(request):
     """Фикстура для перадачи url"""
     return request.config.getoption('--url')
 
@@ -37,12 +37,12 @@ def web_driver(request):
 
     if browser == 'firefox':
         options = webdriver.FirefoxOptions()
-        options.headless = True
+        # options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.maximize_window()
     elif browser == 'chrome':
         options = webdriver.ChromeOptions()
-        options.headless = True
+        # options.headless = True
         driver = webdriver.Chrome(options=options, executable_path="./drivers/chromedriver")
         driver.maximize_window()
     elif browser == 'safari':
