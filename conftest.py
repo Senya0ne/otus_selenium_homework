@@ -1,6 +1,7 @@
 """ string for pylint"""
 import pytest
 from selenium import webdriver
+import os
 
 
 def pytest_addoption(parser):
@@ -42,7 +43,7 @@ def web_driver(request):
     elif browser == 'chrome':
         options = webdriver.ChromeOptions()
         options.headless = True
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options, executable_path="./drivers/chromedriver")
         driver.maximize_window()
     elif browser == 'safari':
         driver = webdriver.Safari()
