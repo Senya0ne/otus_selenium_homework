@@ -1,4 +1,3 @@
-import time
 from POM.locators import CatalogLocators
 
 from selenium.webdriver.common.by import By
@@ -33,3 +32,10 @@ def test_sorting_za(web_driver, base_url):
     browser.find_element_by_xpath("//select[@class='form-control']/option[text()='Name (Z - A)']").click()
     products_list = browser.find_elements_by_xpath("//*[@class='product-thumb']")
     assert "Sony VAIO" in products_list[0].text
+
+
+def test_sorting_default(web_driver, base_url):
+    browser = web_driver
+    browser.get(base_url + url_helper)
+    products_list = browser.find_elements_by_xpath("//*[@class='product-thumb']")
+    assert "Apple Cinema 30" in products_list[0].text
