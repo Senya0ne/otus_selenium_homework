@@ -8,4 +8,7 @@ class MainLocators:
     SEARCH_BTN = "btn.btn-default.btn-lg"
     SEARCH_TITLE = "*//h1[contains(text(), 'Search - iphone')]"
     PRODUCT_NAME = "*//a[contains(text(), 'iPhone')]"
+    BTNS_ADD_TO_CART = "button-group"
+    CARD_TOTAL = 'cart-total'
+    NAVBAR = "nav.navbar-nav"
 
