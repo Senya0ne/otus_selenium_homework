@@ -1,7 +1,6 @@
 from selenium.webdriver import ActionChains
 
 from POM.locators import MainLocators
-import time
 from selenium.webdriver.common.by import By
 
 
