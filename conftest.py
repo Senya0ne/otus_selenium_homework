@@ -8,7 +8,7 @@ def pytest_addoption(parser):
 
     parser.addoption('--browser',
                      action='store',
-                     default='chrome',
+                     default='firefox',
                      help='Передайте драйвер браузера с помощью параметра --browser, '
                           'доступны safari, firefox, chrome'
                           ', например, --browser=safari')
@@ -36,12 +36,12 @@ def web_driver(request):
 
     if browser == 'firefox':
         options = webdriver.FirefoxOptions()
-        # options.headless = True
+        options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.maximize_window()
     elif browser == 'chrome':
         options = webdriver.ChromeOptions()
-        # options.headless = True
+        options.headless = True
         driver = webdriver.Chrome(options=options, executable_path="./drivers/chromedriver")
         driver.maximize_window()
     elif browser == 'safari':

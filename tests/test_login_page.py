@@ -1,6 +1,5 @@
 from POM.locators import LoginLocators
 from selenium.webdriver.common.by import By
-import time
 
 url_helper = "/index.php?route=account/login"
 email = "test@test.com"
@@ -38,9 +37,9 @@ def test_auth_failed(web_driver, base_url):
     browser = web_driver
     browser.get(base_url + url_helper)
     browser.find_element(By.CSS_SELECTOR, LoginLocators.BTN_LOGIN).click()
-    # time.sleep(2)
     alert = browser.find_element(By.CLASS_NAME, LoginLocators.ALERT_NOT_MATCH_KEYPAIR).text
     assert_text = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."
+    # assert_text = "Warning: No match for E-Mail Address and/or Password."
     assert assert_text in alert
 
     browser.find_element(By.ID, LoginLocators.EMAIL_FIELD).click()
@@ -58,8 +57,8 @@ def test_forgotten_password(web_driver, base_url):
     browser = web_driver
     browser.get(base_url + url_helper)
     browser.find_element(By.XPATH, LoginLocators.FORGOTTEN_PASSWORD).click()
-    browser.find_element(By.ID, LoginLocators.INPUT_EMAIL_FORGOTTEN_PASSWORD).click()
-    browser.find_element(By.ID, LoginLocators.INPUT_EMAIL_FORGOTTEN_PASSWORD).send_keys(email)
+    browser.find_element(By.ID, LoginLocators.EMAIL_FIELD).click()
+    browser.find_element(By.ID, LoginLocators.EMAIL_FIELD).send_keys(email)
     browser.find_element(By.CSS_SELECTOR, LoginLocators.BTN_CONTINUE_FORGOTTEN_PASSWORD).click()
     assert "An email with a confirmation link has been sent your email address." in browser.find_element(By.CLASS_NAME, LoginLocators.ALERT_SUCCESS_FORGOTTEN_PASWORD).text
 
