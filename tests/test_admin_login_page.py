@@ -28,7 +28,7 @@ def test_auth_failed(web_driver, base_url):
     browser = web_driver
     browser.get(base_url + url_helper)
     browser.find_element(By.CSS_SELECTOR, AdminLocators.BTN_LOGIN_ADMIN).click()
-    alert = browser.find_element(By.CLASS_NAME, AdminLocators.ALERT_NOT_MATCH_KEYPAIR).text
+    alert = browser.find_element(By.CLASS_NAME, AdminLocators.ALERT).text
     assert_text = "No match for Username and/or Password."
     assert assert_text in alert
 
@@ -50,5 +50,5 @@ def test_forgotten_password(web_driver, base_url):
     browser.find_element(By.ID, AdminLocators.EMAIL_FIELD).click()
     browser.find_element(By.ID, AdminLocators.EMAIL_FIELD).send_keys(email)
     browser.find_element(By.CSS_SELECTOR, AdminLocators.BTN_LOGIN_ADMIN).click()
-    assert "An email with a confirmation link has been sent your admin email address." in browser.find_element(By.CLASS_NAME, AdminLocators.ALERT_SUCCESS_FORGOTTEN_PASWORD).text
+    assert "An email with a confirmation link has been sent your admin email address." in browser.find_element(By.CLASS_NAME, AdminLocators.ALERT).text
 

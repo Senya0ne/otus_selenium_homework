@@ -11,7 +11,6 @@ class MainLocators:
     BTNS_ADD_TO_CART = "button-group"
     CARD_TOTAL = 'cart-total'
     NAVBAR = "nav.navbar-nav"
-    ALERT_NOT_MATCH_KEYPAIR = "alert.alert-danger.alert-dismissible"
-    ALERT_SUCCESS_FORGOTTEN_PASWORD = "alert.alert-success.alert-dismissible"
+    ALERT = "alert-dismissible"
     FORGOTTEN_PASSWORD = "*//a[contains(text(), 'Forgotten Password')]"
     EMAIL_FIELD = "input-email"
