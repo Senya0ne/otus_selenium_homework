@@ -23,20 +23,16 @@ def pytest_addoption(parser):
 @pytest.fixture
 def base_url(request):
     """Фикстура для перадачи url"""
+
     return request.config.getoption('--url')
 
 
-@pytest.fixture()
-def web_driver(request):
-    """
-    Фикстура для инициализации и передачи драйверов
-    """
-
-    browser = request.config.getoption('--browser')
+def web_driver(browser):
+    """для инициализации и передачи драйверов """
 
     if browser == 'firefox':
         options = webdriver.FirefoxOptions()
-        options.headless = True
+        # options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.maximize_window()
     elif browser == 'chrome':
@@ -47,9 +43,11 @@ def web_driver(request):
     elif browser == 'safari':
         driver = webdriver.Safari()
         driver.maximize_window()
+    return driver
 
-    def driver_finalizer():
-        driver.quit()
 
-    request.addfinalizer(driver_finalizer)
+@pytest.fixture()
+def browser(request):
+    driver = web_driver(request.config.getoption('--browser'))
+    request.addfinalizer(driver.close)
     return driver
