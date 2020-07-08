@@ -1,7 +1,6 @@
 """ string for pylint"""
 import pytest
 from selenium import webdriver
-import os
 
 
 def pytest_addoption(parser):
@@ -9,7 +8,7 @@ def pytest_addoption(parser):
 
     parser.addoption('--browser',
                      action='store',
-                     default='chrome',
+                     default='firefox',
                      help='Передайте драйвер браузера с помощью параметра --browser, '
                           'доступны safari, firefox, chrome'
                           ', например, --browser=safari')
@@ -22,7 +21,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def url(request):
+def base_url(request):
     """Фикстура для перадачи url"""
     return request.config.getoption('--url')
 
