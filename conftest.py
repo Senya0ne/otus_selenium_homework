@@ -32,7 +32,7 @@ def web_driver(browser):
 
     if browser == 'firefox':
         options = webdriver.FirefoxOptions()
-        # options.headless = True
+        options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.maximize_window()
     elif browser == 'chrome':
