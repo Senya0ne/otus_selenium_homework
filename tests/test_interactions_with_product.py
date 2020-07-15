@@ -2,6 +2,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from POM.locators import AdminLocators
 from selenium.webdriver.common.by import By
+import time
 
 url_helper = "/admin/"
 user = "user"
@@ -66,5 +67,8 @@ def test_delete_product(browser, base_url):
     table_products = browser.find_elements(By.XPATH, AdminLocators.TABLE_PRODUCTS)
     length_table_products = len(table_products)
     assert length_table_products > 1
+    browser.find_element(By.XPATH, AdminLocators.PRODUCT_FOR_DELETE).click()
+    browser.find_element(By.XPATH, AdminLocators.BTN_DELETE).click()
+    time.sleep(10)
 
 
