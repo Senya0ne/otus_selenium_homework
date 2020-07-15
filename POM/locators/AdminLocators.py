@@ -13,3 +13,5 @@ class AdminLocators(MainLocators):
     ADD_METATAGS_FOR_PRODUCT = "input-meta-title1"
     DATA = "Data"
     MODEL = "input-model"
+    TABLE_PRODUCTS = "*//tr"
+    NAME_PRODUCTS_IN_TABLE = "td.text-left"

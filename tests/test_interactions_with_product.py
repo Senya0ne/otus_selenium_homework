@@ -27,13 +27,13 @@ def test_add_product(browser, base_url):
     meta_tags = browser.find_element(By.ID, AdminLocators.ADD_METATAGS_FOR_PRODUCT)
     meta_tags.click()
     meta_tags.send_keys("iPhone, Mobile")
-    # browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     data_tab = browser.find_element(By.LINK_TEXT, AdminLocators.DATA)
     data_tab.click()
     model = browser.find_element(By.ID, AdminLocators.MODEL)
     model.click()
     model.send_keys("iPhone 20")
     browser.find_element(By.CSS_SELECTOR, AdminLocators.BTN_LOGIN_ADMIN).click()
+    assert "Success: You have modified products!" in browser.find_element(By.CLASS_NAME, AdminLocators.ALERT).text
 
 
 def test_edit_product(browser, base_url):
@@ -47,6 +47,9 @@ def test_edit_product(browser, base_url):
     wait.until(EC.title_is("Dashboard"))
     browser.find_element(By.CLASS_NAME, AdminLocators.CATALOG).click()
     browser.find_element(By.LINK_TEXT, AdminLocators.PRODUCTS).click()
+    table_products = browser.find_elements(By.XPATH, AdminLocators.TABLE_PRODUCTS)
+    length_table_products = len(table_products)
+    assert length_table_products > 1
 
 
 def test_delete_product(browser, base_url):
@@ -60,3 +63,8 @@ def test_delete_product(browser, base_url):
     wait.until(EC.title_is("Dashboard"))
     browser.find_element(By.CLASS_NAME, AdminLocators.CATALOG).click()
     browser.find_element(By.LINK_TEXT, AdminLocators.PRODUCTS).click()
+    table_products = browser.find_elements(By.XPATH, AdminLocators.TABLE_PRODUCTS)
+    length_table_products = len(table_products)
+    assert length_table_products > 1
+
+
