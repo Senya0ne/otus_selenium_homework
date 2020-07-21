@@ -15,6 +15,8 @@ class AdminLocators(MainLocators):
     MODEL = "input-model"
     TABLE_PRODUCTS = "*//tr"
     NAME_PRODUCTS_IN_TABLE = "td.text-left"
-    PRODUCT_FOR_DELETE = "*//input[@value='42']"
+    ID_PRODUCT_FOR_INTERACTIONS = "*//input[@value='92']"
+    BTN_EDIT = "a[data-original-title='Edit']"
     BTN_DELETE = "*//button[@data-original-title='Delete']"
+    BTN_SAVE = "button[data-original-title='Save']"
 
